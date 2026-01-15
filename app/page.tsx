@@ -1,4 +1,4 @@
-// app/page.tsx
+
 'use client'
 
 import { z } from 'zod' /*schema validation library*/
@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 
-// 1️⃣ Zod schema
+// Zod schema
 const loginSchema = z.object({
   email: z.string().email('Enter a valid email'),
   password: z.string().min(6, 'Password must be at least 6 characters'),
@@ -23,12 +23,12 @@ type LoginFormValues = z.infer<typeof loginSchema>
 } */
 
 export default function LoginPage() {
-  // 2️⃣ react-hook-form setup
+  //react-hook-form setup
   const { register, handleSubmit, formState: { errors, isSubmitting }, } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
   })
 
-  // 3️⃣ Submit handler
+  //Submit handler
   const onSubmit = (data: LoginFormValues) => {
     console.log('Login Data:', data)
   }
